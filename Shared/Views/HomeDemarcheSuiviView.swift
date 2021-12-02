@@ -17,12 +17,14 @@ struct HomeDemarcheSuiviView: View {
                     .frame(width: 3, height: 600)
                     .position(x: 40.0, y: 350.0)
                 
-                VStack {
+                
+                VStack (alignment: .leading) {
                     CercleGrisFait(text: "Création")
-                        .position(x: 85.0)
                     
-                    titreTypeEtape(label: "MES DEMARCHES RECURRENTES")
-                        .position(x: 210.0)
+                    HStack {
+                        Spacer()
+                        titreTypeEtape(label: "MES DEMARCHES RECURRENTES")
+                    }
                     
                     VStack (alignment: .leading) {
                         ForEach(etapesSuivi) { etape in
@@ -31,30 +33,27 @@ struct HomeDemarcheSuiviView: View {
                             }
                         }
                     }
-                    .position(x: 140.0)
                     
-                    titreTypeEtape(label: "TVA > XXXX €")
-                        .position(x: 210.0)
+                    HStack {
+                        Spacer()
+                        titreTypeEtape(label: "TVA > XXXX €")
+                    }
                     
                     NavigationLink(destination: DetailEtapeView(etape: etapeTVA)) {
                         CercleGrisAFaire(text: etapeTVA.name)
-                    }.position(x: 120.0)
-                    
-                }
-                
-                
-            }
-            
-            .navigationBarTitle(Text("Démarches"))
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem {
-                    NavigationLink {
-                        MesAlertesView()
-                    } label: {
-                        Image(systemName: "bell")
                     }
-                    .foregroundColor(Color("greenMEkit"))
+              }
+                .navigationBarTitle(Text("Démarches"))
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem {
+                        NavigationLink {
+                            MesAlertesView()
+                        } label: {
+                            Image(systemName: "bell")
+                        }
+                        .foregroundColor(Color("greenMEkit"))
+                    }
                 }
             }
         }
