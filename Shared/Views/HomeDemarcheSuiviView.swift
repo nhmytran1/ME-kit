@@ -12,19 +12,19 @@ struct HomeDemarcheSuiviView: View {
         NavigationView {
             ZStack {
                 //BARRE DE SUIVI LATERALE
-                Rectangle()
-                    .fill(.gray)
-                    .frame(width: 3, height: 600)
-                    .position(x: 40.0, y: 350.0)
+                HStack {
+                    Rectangle()
+                        .fill(.gray)
+                        .frame(width: 3, height: 400)
+                    Spacer()
+                }
+                .padding(.leading, 43.0)
                 
                 
                 VStack (alignment: .leading) {
                     CercleGrisFait(text: "Création")
                     
-                    HStack {
-                        Spacer()
-                        titreTypeEtape(label: "MES DEMARCHES RECURRENTES")
-                    }
+                    titreTypeEtape(label: "MES DEMARCHES RECURRENTES")
                     
                     VStack (alignment: .leading) {
                         ForEach(etapesSuivi) { etape in
@@ -34,26 +34,23 @@ struct HomeDemarcheSuiviView: View {
                         }
                     }
                     
-                    HStack {
-                        Spacer()
-                        titreTypeEtape(label: "TVA > XXXX €")
-                    }
-                    
+                    titreTypeEtape(label: "TVA > XXXX €")
+
                     NavigationLink(destination: DetailEtapeView(etape: etapeTVA)) {
                         CercleGrisAFaire(text: etapeTVA.name)
                     }
-              }
-                .navigationBarTitle(Text("Démarches"))
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem {
-                        NavigationLink {
-                            MesAlertesView()
-                        } label: {
-                            Image(systemName: "bell")
-                        }
-                        .foregroundColor(Color("greenMEkit"))
+                }
+            }
+            .navigationBarTitle(Text("Démarches"))
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem {
+                    NavigationLink {
+                        MesAlertesView()
+                    } label: {
+                        Image(systemName: "bell")
                     }
+                    .foregroundColor(Color("greenMEkit"))
                 }
             }
         }
@@ -67,11 +64,12 @@ struct titreTypeEtape: View {
         ZStack {
             Rectangle()
                 .stroke(.gray, lineWidth: 2.0)
-                .frame(width: 300.0, height: 30.0, alignment: .center)
+                .frame(width: 270.0, height: 30.0, alignment: .center)
             Text(label)
                 .foregroundColor(.gray)
                 .padding()
         }
+        .padding(.leading, 50.0)
         
     }
 }
