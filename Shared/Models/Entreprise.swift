@@ -12,18 +12,18 @@ struct Entreprise {
     var donneeDebutActivite : String
     var donneeDomiciliation : String
     var donneeTypeActivite : String
-    var donneeACCRE : Reponse
-    var donneeActivitePrincipal : Reponse
-    var donneeImpot : Reponse
-    var etapeEnCours: [EtapeDemarche]
-    var avancement: DemarcheCategorie
+    var donneeACCRE : Reponses
+    var donneeActivitePrincipal : Reponses
+    var donneeImpot : Reponses
+    var etapeEnCours: String
+    var avancement: String
 }
 
 
-//source de données
-var maBoiteDeOuf: Entreprise = Entreprise(nomination: "", donneeDebutActivite: "", donneeDomiciliation: "", donneeTypeActivite: "", donneeACCRE: .non, donneeActivitePrincipal: .non, donneeImpot: .non, etapeEnCours: [etape1], avancement: .creation)
+//source de donnÃ©es
+var blocInfosMonEntreprise: Entreprise = Entreprise(nomination: "", donneeDebutActivite: "", donneeDomiciliation: "", donneeTypeActivite: "", donneeACCRE: .non, donneeActivitePrincipal: .non, donneeImpot: .non, etapeEnCours: "", avancement: "")
 
-enum Reponse : String, CaseIterable {
+enum Reponses : String, CaseIterable {
     case oui = "oui"
     case non = "non"
 }

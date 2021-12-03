@@ -20,26 +20,31 @@ struct HomeDemarcheSuiviView: View {
                 }
                 .padding(.leading, 43.0)
                 
-                
-                VStack (alignment: .leading) {
-                    CercleGrisFait(text: "Création")
-                    
-                    titreTypeEtape(label: "MES DEMARCHES RECURRENTES")
-                    
+                HStack {
                     VStack (alignment: .leading) {
-                        ForEach(etapesSuivi) { etape in
-                            NavigationLink(destination: DetailEtapeView(etape: etape)) {
-                                CercleVertAFaire(text: etape.name)
+                        CercleGrisFait(text: "Création")
+                        
+                        titreTypeEtape(label: "MES DEMARCHES RECURRENTES")
+                            .padding(.leading, 50.0)
+                        
+                        VStack (alignment: .leading) {
+                            ForEach(etapesSuivi) { etape in
+                                NavigationLink(destination: DetailEtapeView(etape: etape)) {
+                                    CercleVertAFaire(text: etape.name)
+                                }
                             }
                         }
+                        
+                        titreTypeEtape(label: "TVA > XXXX €")
+                            .padding(.leading, 50.0)
+                        
+                        NavigationLink(destination: DetailEtapeView(etape: etapeTVA)) {
+                            CercleGrisAFaire(text: etapeTVA.name)
+                        }
                     }
-                    
-                    titreTypeEtape(label: "TVA > XXXX €")
-
-                    NavigationLink(destination: DetailEtapeView(etape: etapeTVA)) {
-                        CercleGrisAFaire(text: etapeTVA.name)
-                    }
+                    Spacer()
                 }
+                .padding(.leading, 15.0)
             }
             .navigationBarTitle(Text("Démarches"))
             .navigationBarTitleDisplayMode(.inline)
@@ -69,7 +74,7 @@ struct titreTypeEtape: View {
                 .foregroundColor(.gray)
                 .padding()
         }
-        .padding(.leading, 50.0)
+        
         
     }
 }

@@ -10,23 +10,32 @@ import SwiftUI
 struct HomeDemarcheCreaView: View {
     
     var body: some View {
-        HStack {
-            Spacer()
-            Spacer()
-            NavigationView {
-                VStack{
-                    List(etapesCreation){
-                        etape in
-                        NavigationLink(destination: DetailEtapeView(etape: etape)) {
-                            CercleVertPlay(text: etape.name)
-                        }                }
-                }
+        ZStack {
+            HStack {
+                Rectangle()
+                    .fill(.gray)
+                    .frame(width: 3, height: 400)
+                Spacer()
             }
-            Spacer()
-            Spacer()
-            Spacer()
-            Spacer()
+            .padding(.leading, 43.0)
+            
+            
+            
         }
+        
+        
+        
+        
+        
+//        NavigationView {
+//            VStack{
+//                List(etapesCreation){
+//                    etape in
+//                    NavigationLink(destination: DetailEtapeView(etape: etape)) {
+//                        CercleVertPlay(text: etape.name)
+//                    }                }
+//            }
+//        }
     }
 }
 
